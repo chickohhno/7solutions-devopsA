@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: production
+
+resources:
+  - ../../base
+  - namespace.yaml
+  - hpa.yaml
+  - pdb.yaml
+
+images:
+  - name: chickohhno/hello-api
+    newTag: v1.0.0
+
+patches:
+  - path: deployment-resource-patch.yaml

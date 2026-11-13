@@ -4,7 +4,7 @@ metadata:
   name: hello-api
 spec:
   selector:
-    app.kubernetes.io/name: hello-api
+    app: hello-api
   ports:
     - protocol: TCP
       port: 80

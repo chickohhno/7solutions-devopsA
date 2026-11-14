@@ -30,6 +30,15 @@ spec:
               cpu: 500m
               memory: 512Mi
 
+          additionalDataSources:
+            - name: Tempo
+              type: tempo
+              uid: tempo
+              access: proxy
+              url: http://tempo.monitoring.svc.cluster.local:3200
+              isDefault: false
+              editable: false
+
         prometheus:
           prometheusSpec:
             retention: 2d

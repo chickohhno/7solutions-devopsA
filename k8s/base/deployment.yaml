@@ -47,6 +47,11 @@ spec:
         - name: hello-api
           image: chickohhno/hello-api:v1.0.0
           imagePullPolicy: IfNotPresent
+
+          env:
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: "http://tempo.monitoring.svc.cluster.local:4318"
+
           ports:
             - name: http
               containerPort: 8080

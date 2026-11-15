@@ -11,7 +11,7 @@ resources:
 
 images:
   - name: chickohhno/hello-api
-    newTag: v1.0.2
+    newTag: 2c9f046cfdf1c0686abfbcb66f4a07bacde78ce6
 
 patches:
   - path: deployment-resource-patch.yaml

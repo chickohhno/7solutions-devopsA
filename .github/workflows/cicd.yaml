@@ -10,7 +10,7 @@ on:
       - 'go.sum'
       - 'Dockerfile'
       - '.dockerignore'
-      - '.github/workflows/cicd.yml'
+      - '.github/workflows/cicd.yaml'
 
   workflow_dispatch:
 

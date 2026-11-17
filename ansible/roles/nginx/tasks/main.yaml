@@ -1,0 +1,47 @@
+
+---
+- name: Install Python requests for Docker management
+  ansible.builtin.apt:
+    name: python3-requests
+    state: present
+
+- name: Create NGINX HTML directory
+  ansible.builtin.file:
+    path: "{{ nginx_html_dir }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Generate NGINX homepage using Jinja2
+  ansible.builtin.template:
+    src: index.html.j2
+    dest: "{{ nginx_html_dir }}/index.html"
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: Deploy NGINX Docker container
+  community.docker.docker_container:
+    name: "{{ nginx_container_name }}"
+    image: "{{ nginx_image }}"
+    state: started
+    restart_policy: always
+    published_ports:
+      - "127.0.0.1:{{ nginx_host_port }}:80"
+    volumes:
+      - "{{ nginx_html_dir }}:/usr/share/nginx/html:ro"
+
+- name: Verify NGINX HTTP response
+  ansible.builtin.uri:
+    url: "http://127.0.0.1:{{ nginx_host_port }}/"
+    status_code: 200
+    return_content: true
+  register: nginx_response
+  retries: 5
+  delay: 2
+  until: nginx_response.status == 200
+
+- name: Display NGINX verification result
+  ansible.builtin.debug:
+    msg: "NGINX returned HTTP {{ nginx_response.status }}"

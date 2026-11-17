@@ -1,0 +1,8 @@
+---
+nginx_container_name: ansible-nginx
+nginx_image: nginx:1.28-alpine
+nginx_host_port: 8080
+nginx_html_dir: /opt/ansible-nginx/html
+
+nginx_app_name: "7Solutions DevOps"
+nginx_environment: "Production"

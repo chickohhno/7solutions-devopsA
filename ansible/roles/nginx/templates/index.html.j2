@@ -1,0 +1,15 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ nginx_app_name }}</title>
+</head>
+<body>
+    <h1>Welcome to {{ nginx_app_name }}</h1>
+
+    <p>Environment: {{ nginx_environment }}</p>
+    <p>Server: {{ inventory_hostname }}</p>
+    <p>Deployed using Ansible and Docker</p>
+</body>
+</html>

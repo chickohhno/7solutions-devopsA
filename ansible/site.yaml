@@ -1,0 +1,11 @@
+---
+- name: Configure Ubuntu infrastructure
+  hosts: ubuntu
+  become: true
+  gather_facts: true
+
+  roles:
+    - system
+    - docker
+    - nginx
+    - node_exporter

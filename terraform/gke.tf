@@ -8,7 +8,7 @@ resource "google_container_cluster" "hello_api" {
   remove_default_node_pool = true
   initial_node_count       = 1
 
-  deletion_policy = false
+  deletion_protection = false
 
   networking_mode = "VPC_NATIVE"
 
